@@ -38,3 +38,4 @@ jobs:
         REPO: self
         BRANCH: test
         FOLDER: build # The directory where your assets are generated
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
