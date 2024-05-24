@@ -45,11 +45,11 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: node-app
-      - name: Sed text out
-        run: |
-          echo "What are you doing here"
+    - uses: actions/download-artifact@v3
+      name: Download artifact from build job
+      with:
+        name: node-app
+    - name: Send text out
+      run: |
+        echo "What are you doing here"
       
