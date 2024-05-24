@@ -32,6 +32,7 @@ jobs:
     - run: npm test
     - name: Zip all files for upload between jobs
       run: zip --symlinks -r nest.zip ./*
+       zip -r JestTest.zip JestTest -x ".git/*" ".github/*"
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
       with:
