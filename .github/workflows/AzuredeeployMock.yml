@@ -30,13 +30,6 @@ jobs:
     - run: npm ci
     - run: npm run build 
     - run: npm test
-    - name: Zip all files for upload between jobs
-      run: zip -r JestTest.zip JestTest -x ".git/*" ".github/*"
-    - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v3
-      with:
-        name: node-app
-        path: nest.zip
   deploy:
     runs-on: windows-latest
     needs: build
@@ -45,10 +38,6 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
-    - uses: actions/download-artifact@v3
-      name: Download artifact from build job
-      with:
-        name: node-app
     - name: Send text out
       run: |
         echo "What are you doing here"
