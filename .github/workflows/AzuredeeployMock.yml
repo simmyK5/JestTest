@@ -52,7 +52,11 @@ jobs:
         name: node-app
     - name: Unzip artifact for deployment
       run: unzip release.zip
-    - name: Send text out
-      run: |
-        echo "What are you doing here"
+    - name: 'Deploy to Azure Web App'
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+          app-name: 'UatMock'
+          package: release.zip
+          publish-profile: ${{profile}}
       
